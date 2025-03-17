@@ -25,9 +25,10 @@ public class Main {
     Collections.sort(list);
 
     int sum = 0;
-    for (int i = 0; i < list.size(); i++) {
-      sum += list.get(i);
+    for (int num : list) {
+      sum += num;
     }
+
     System.out.println(sum);
     System.out.println(list.get(0));
   }
