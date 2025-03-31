@@ -1,30 +1,29 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    int M = Integer.parseInt(br.readLine());
-    String[] strScores = br.readLine().split(" ");
+    StringTokenizer st = new StringTokenizer(br.readLine());
+    int M = Integer.parseInt(st.nextToken());
+    int[] arr = new int[M];
 
-    if (strScores.length != M) return;
-
-    int max = Integer.parseInt(strScores[0]);
-    for (int i = 1; i < M; i++) {
-      int target = Integer.parseInt(strScores[i]);
-      if (max < target) max = target;
+    st = new StringTokenizer(br.readLine());
+    for (int i = 0; i < M; i++) {
+      arr[i] = Integer.parseInt(st.nextToken());
     }
 
-    double[] dblScores = new double[M];
-    double sum = 0.0;
+    int max = 0;
+    int sum = 0;
 
     for (int i = 0; i < M; i++) {
-      dblScores[i] = Double.parseDouble(strScores[i]) / max * 100;
-      sum += dblScores[i];
+      if (arr[i] > max) max = arr[i];
+      sum += arr[i];
     }
 
-    System.out.println(sum / M);
+    System.out.println((double) sum * 100 / max / M);
   }
 }
